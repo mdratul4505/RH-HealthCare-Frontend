@@ -45,15 +45,17 @@ export default function RegisterPage() {
       </div>
 
       {/* Image Section (Half of full page) */}
-      <div className="relative hidden lg:block bg-muted">
-        <Image
-          src="/register.jpg"
-          alt="Register illustration"
-          fill
-          priority
-          sizes="50vw"
-          className="object-cover"
-        />
+      <div className="relative hidden lg:flex items-center justify-center bg-muted/30 p-8 xl:p-12 border-l">
+        <div className="relative w-full h-full max-w-lg max-h-[85vh]">
+          <Image
+            src="/register.jpg"
+            alt="Register illustration"
+            fill
+            priority
+            sizes="50vw"
+            className="object-contain drop-shadow-sm"
+          />
+        </div>
       </div>
     </div>
   );
