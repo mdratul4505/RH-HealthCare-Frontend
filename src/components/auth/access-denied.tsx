@@ -1,19 +1,20 @@
-import * as React from "react"
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ShieldAlert } from "lucide-react";
 
-const MOBILE_BREAKPOINT = 768
-
-export function useIsMobile() {
-  const [isMobile, setIsMobile] = React.useState<boolean | undefined>(undefined)
-
-  React.useEffect(() => {
-    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`)
-    const onChange = () => {
-      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
-    }
-    mql.addEventListener("change", onChange)
-    setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
-    return () => mql.removeEventListener("change", onChange)
-  }, [])
-
-  return !!isMobile
+export default function AccessDenied() {
+  return (
+    <div className="w-full min-h-[60vh] flex flex-col items-center justify-center gap-4 text-center p-6">
+      <div className="rounded-full bg-destructive/10 p-4 text-destructive">
+        <ShieldAlert className="size-12" />
+      </div>
+      <h1 className="text-2xl font-bold tracking-tight">Access Denied</h1>
+      <p className="text-muted-foreground max-w-md text-sm">
+        You do not have permission to access this page. Please contact your administrator or return to dashboard.
+      </p>
+      <Link href="/">
+        <Button>Back to Home</Button>
+      </Link>
+    </div>
+  );
 }

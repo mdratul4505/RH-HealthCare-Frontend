@@ -21,7 +21,7 @@ import { useRegistration } from "@/hooks";
 import { toast } from "../ui/toast";
 import { Spinner } from "../ui/spinner";
 
-export function RegisterForm() {
+export default function RegisterForm() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);

@@ -12,7 +12,7 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import Logo from "@/assets/svg/Logo";
+import Logo from "@/assets/svg/logo";
 import { UserRole } from "@/types";
 import { adminRoutes, doctorRoutes, patientRoutes } from "@/routes";
 import { SidebarItems } from "@/types/sidebar.type";
