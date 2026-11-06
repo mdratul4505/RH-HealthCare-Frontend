@@ -8,4 +8,4 @@ export default function layout({ children }: { children: ReactNode }) {
       <DashboardShell role="ADMIN">{children}</DashboardShell>
     </RoleGuard>
   );
-}.
+}
