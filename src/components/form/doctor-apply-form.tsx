@@ -30,11 +30,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
   doctorApplicationSchema,
-  isAcceptedFileSize,
-  isAcceptedFileType,
   MAX_ADDITIONAL_FILES,
   MAX_FILE_SIZE,
-  MAX_FILE_SIZE_BYTES,
 } from "@/validation";
 import { formatFileSize } from "@/utils";
 import { DoctorApplicationData } from "@/types";

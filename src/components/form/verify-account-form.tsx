@@ -42,7 +42,7 @@ export default function VerifyAccountForm({
     if (!email) {
       router.push("/");
     }
-  }, [email]);
+  }, [email, router]);
 
   useEffect(() => {
     if (resendTimer <= 0) {
@@ -54,7 +54,7 @@ export default function VerifyAccountForm({
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [resendTimer]);
 
   const handleOTP = () => {
     if (otp.length !== 6) {
