@@ -20,6 +20,10 @@ const badgeVariants = cva(
           "border-transparent bg-amber-500/15 text-amber-700 dark:text-amber-400 font-medium",
         teal:
           "border-transparent bg-teal-500/15 text-teal-700 dark:text-teal-300 font-medium",
+        indigo:
+          "border-transparent bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 font-medium",
+        emerald:
+          "border-transparent bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 font-medium",
       },
     },
     defaultVariants: {

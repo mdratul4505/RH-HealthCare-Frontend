@@ -1,30 +1,42 @@
-const prefix = "/doctor";
-
 export const doctorRoutes = [
   {
-    title: "Schedule",
+    title: "Clinical Practice",
     items: [
       {
-        title: "Overview",
-        url: `${prefix}`,
+        title: "Clinical Overview",
+        url: "/doctor",
+        icon: "LayoutDashboard",
       },
       {
-        title: "Create Schedule",
-        url: `${prefix}`,
+        title: "Today's Queue",
+        url: "/doctor#today",
+        icon: "Video",
+        badge: "Live",
+      },
+      {
+        title: "Publish Schedule Slots",
+        url: "/doctor#schedules",
+        icon: "Calendar",
+      },
+      {
+        title: "Patient Consultations",
+        url: "/doctor#patients",
+        icon: "Users",
       },
     ],
   },
   {
-    title: "App Settings",
+    title: "Prescriptions & Earnings",
     items: [
       {
-        title: "Routing",
-        url: "#",
+        title: "Digital Prescriptions",
+        url: "/doctor#prescriptions",
+        icon: "FileCheck2",
       },
       {
-        title: "Data Fetching",
-        url: "#",
-        isActive: true,
+        title: "Revenue & Earnings",
+        url: "/doctor#earnings",
+        icon: "Banknote",
       },
     ],
   },

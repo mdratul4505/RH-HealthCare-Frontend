@@ -14,6 +14,7 @@ export function Avatar({
   alt = "User avatar",
   fallback = "U",
   className,
+  children,
   ...props
 }: AvatarProps) {
   const [hasError, setHasError] = React.useState(!src);
@@ -30,7 +31,9 @@ export function Avatar({
       )}
       {...props}
     >
-      {!hasError && src ? (
+      {children ? (
+        children
+      ) : !hasError && src ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={src}
@@ -44,5 +47,41 @@ export function Avatar({
         </span>
       )}
     </div>
+  );
+}
+
+export function AvatarImage({
+  src,
+  alt = "User",
+  className,
+  ...props
+}: React.ImgHTMLAttributes<HTMLImageElement>) {
+  if (!src) return null;
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={src}
+      alt={alt}
+      className={cn("aspect-square size-full object-cover", className)}
+      {...props}
+    />
+  );
+}
+
+export function AvatarFallback({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) {
+  return (
+    <span
+      className={cn(
+        "flex size-full items-center justify-center font-bold text-xs uppercase",
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </span>
   );
 }

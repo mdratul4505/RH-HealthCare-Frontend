@@ -1,30 +1,41 @@
-const prefix = "/patient";
-
 export const patientRoutes = [
   {
-    title: "Bookings",
+    title: "Patient Portal",
     items: [
       {
         title: "Overview",
-        url: `${prefix}`,
+        url: "/patient",
+        icon: "LayoutDashboard",
       },
       {
-        title: "Payment History",
-        url: `${prefix}`,
+        title: "Upcoming Consultations",
+        url: "/patient#upcoming",
+        icon: "Calendar",
+      },
+      {
+        title: "Consultation History",
+        url: "/patient#history",
+        icon: "Clock",
+      },
+      {
+        title: "My Prescriptions",
+        url: "/patient#prescriptions",
+        icon: "FileCheck2",
       },
     ],
   },
   {
-    title: "App Settings",
+    title: "Healthcare Services",
     items: [
       {
-        title: "Routing",
-        url: "#",
+        title: "Find a Doctor",
+        url: "/doctors",
+        icon: "Stethoscope",
       },
       {
-        title: "Data Fetching",
-        url: "#",
-        isActive: true,
+        title: "Invoices & Payments",
+        url: "/patient#payments",
+        icon: "Receipt",
       },
     ],
   },
