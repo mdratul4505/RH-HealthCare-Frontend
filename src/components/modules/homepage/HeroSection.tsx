@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/context/language-context";
@@ -26,8 +27,13 @@ export default function HeroSection() {
 
       <div className="container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Left Column: Headline and CTAs */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+          {/* Left Column: Headline and CTAs with Motion */}
+          <motion.div
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 space-y-6 text-center lg:text-left"
+          >
             {/* Top Pill Badge */}
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1 text-xs font-semibold text-primary">
               <span className="flex size-2 rounded-full bg-emerald-500 animate-ping" />
@@ -55,14 +61,21 @@ export default function HeroSection() {
             {/* Call to Actions */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
               <Link href="/doctors" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full sm:w-auto gap-2 bg-primary text-primary-foreground font-semibold px-6 shadow-md hover:bg-primary/90 transition-all hover:gap-3">
+                <Button
+                  size="lg"
+                  className="w-full sm:w-auto gap-2 bg-primary text-primary-foreground font-semibold px-6 shadow-md hover:bg-primary/90 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                >
                   <Search className="size-4" />
                   <span>{t("hero_cta_find")}</span>
                   <ArrowRight className="size-4" />
                 </Button>
               </Link>
               <Link href="/#services" className="w-full sm:w-auto">
-                <Button size="lg" variant="outline" className="w-full sm:w-auto gap-2 font-medium px-6 hover:border-primary/50">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="w-full sm:w-auto gap-2 font-medium px-6 hover:border-primary/50 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                >
                   <Calendar className="size-4 text-primary" />
                   <span>{t("hero_cta_explore")}</span>
                 </Button>
@@ -84,14 +97,19 @@ export default function HeroSection() {
                 <span className="text-xs text-muted-foreground font-medium">{t("hero_stat_satisfaction")}</span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right Column: Interactive Healthcare Illustration Card */}
-          <div className="lg:col-span-5 relative flex justify-center">
+          {/* Right Column: Interactive Showcase Card with Motion Entrance */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 relative flex justify-center"
+          >
             {/* Visual Medical Card Stack */}
             <div className="relative w-full max-w-md">
               {/* Main Medical Showcase Card */}
-              <div className="relative z-10 rounded-3xl border border-border bg-card/90 backdrop-blur-md p-6 sm:p-7 shadow-2xl transition-all">
+              <div className="relative z-10 rounded-3xl border border-border bg-card/90 backdrop-blur-md p-6 sm:p-7 shadow-2xl transition-all hover:shadow-primary/5">
                 {/* Doctor Avatar Header */}
                 <div className="flex items-center gap-4 pb-5 border-b border-border/80">
                   <div className="relative size-16 rounded-2xl overflow-hidden bg-primary/10 border border-primary/20 shrink-0">
@@ -141,7 +159,7 @@ export default function HeroSection() {
 
                 {/* Booking Action */}
                 <Link href="/doctors" className="block pt-2">
-                  <Button className="w-full gap-2 bg-gradient-to-r from-primary to-teal-600 text-primary-foreground font-semibold py-5 rounded-xl shadow-md">
+                  <Button className="w-full gap-2 bg-gradient-to-r from-primary to-teal-600 text-primary-foreground font-semibold py-5 rounded-xl shadow-md transition-all hover:scale-[1.01] active:scale-[0.99]">
                     <Calendar className="size-4" />
                     <span>Book 20-Min Appointment</span>
                   </Button>
@@ -153,8 +171,12 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              {/* Floating Badge 1: Top-Right Online Status */}
-              <div className="absolute -top-4 -right-4 z-20 hidden sm:flex items-center gap-2 rounded-2xl border border-border bg-card p-3 shadow-lg">
+              {/* Floating Badge 1: Top-Right Online Status with Motion Float */}
+              <motion.div
+                animate={{ y: [0, -6, 0] }}
+                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                className="absolute -top-4 -right-4 z-20 hidden sm:flex items-center gap-2 rounded-2xl border border-border bg-card p-3 shadow-lg"
+              >
                 <div className="size-8 rounded-xl bg-emerald-500/15 text-emerald-600 flex items-center justify-center">
                   <Video className="size-4" />
                 </div>
@@ -162,10 +184,14 @@ export default function HeroSection() {
                   <p className="font-bold text-foreground">Live Teleconsult</p>
                   <p className="text-[10px] text-muted-foreground">HD Audio & Video</p>
                 </div>
-              </div>
+              </motion.div>
 
-              {/* Floating Badge 2: Bottom-Left Prescription */}
-              <div className="absolute -bottom-5 -left-4 z-20 hidden sm:flex items-center gap-2.5 rounded-2xl border border-border bg-card p-3 shadow-lg">
+              {/* Floating Badge 2: Bottom-Left Prescription with Motion Float */}
+              <motion.div
+                animate={{ y: [0, 6, 0] }}
+                transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
+                className="absolute -bottom-5 -left-4 z-20 hidden sm:flex items-center gap-2.5 rounded-2xl border border-border bg-card p-3 shadow-lg"
+              >
                 <div className="size-8 rounded-xl bg-primary/15 text-primary flex items-center justify-center">
                   <ShieldCheck className="size-4" />
                 </div>
@@ -173,9 +199,9 @@ export default function HeroSection() {
                   <p className="font-bold text-foreground">Digital Prescription</p>
                   <p className="text-[10px] text-muted-foreground">Official PDF with verification</p>
                 </div>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

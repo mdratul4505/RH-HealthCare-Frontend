@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import PageTransition from "@/components/layout/PageTransition";
 import { useGetMe } from "@/hooks";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -136,7 +137,7 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="space-y-8 max-w-7xl mx-auto">
+    <PageTransition className="space-y-8 max-w-7xl mx-auto">
       {/* Top Banner */}
       <div className="rounded-3xl bg-gradient-to-r from-slate-900 via-teal-950 to-slate-900 text-white p-6 sm:p-8 relative overflow-hidden shadow-lg border border-teal-500/20">
         <div className="absolute top-0 right-0 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -422,6 +423,6 @@ export default function AdminDashboard() {
           </form>
         </DialogContent>
       </Dialog>
-    </div>
+    </PageTransition>
   );
 }

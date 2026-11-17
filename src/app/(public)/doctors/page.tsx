@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
+import PageTransition from "@/components/layout/PageTransition";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -177,7 +178,7 @@ export default function FindDoctorsPage() {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-6 md:py-10 space-y-8">
+    <PageTransition className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-6 md:py-10 space-y-8">
       {/* Page Header */}
       <div className="relative rounded-3xl border border-primary/20 bg-gradient-to-r from-primary/10 via-background to-secondary/10 p-6 sm:p-10 overflow-hidden shadow-xs">
         <div className="max-w-2xl space-y-3">
@@ -390,6 +391,6 @@ export default function FindDoctorsPage() {
           ))}
         </div>
       )}
-    </div>
+    </PageTransition>
   );
 }

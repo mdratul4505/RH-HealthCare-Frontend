@@ -37,10 +37,10 @@ export default function GoogleLoginComponent() {
           await queryClient.invalidateQueries({ queryKey: ["user"] });
           toast.add({
             title: "Logged in Successfully",
-            description: "Welcome back",
+            description: "Welcome to your Patient Portal",
             type: "success",
           });
-          router.push("/");
+          router.push("/patient");
           router.refresh();
         },
         onError: (err: ApiErrorResponse) => {

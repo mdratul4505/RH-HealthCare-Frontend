@@ -12,6 +12,7 @@ import {
 } from "../ui/field";
 import { loginSchema } from "@/validation";
 import { useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 import { Eye, EyeOff, KeyRound, Sparkles, Stethoscope, User, ShieldCheck } from "lucide-react";
 import { useLogin } from "@/hooks";
 import { useRouter } from "next/navigation";
@@ -34,6 +35,7 @@ export default function LoginForm() {
   const [forgotEmail, setForgotEmail] = useState("");
   const [forgotSubmitted, setForgotSubmitted] = useState(false);
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   const { mutate: login, isPending: loginPending } = useLogin();
 
@@ -52,13 +54,25 @@ export default function LoginForm() {
       };
 
       login(loginData, {
-        onSuccess: () => {
+        onSuccess: async (res: any) => {
+          await queryClient.invalidateQueries({ queryKey: ["user"] });
           toast.add({
             title: "Welcome back!",
             description: "Authentication successful. Redirecting to your dashboard...",
             type: "success",
           });
-          router.push("/");
+
+          const loggedRole = res?.data?.user?.role;
+          if (loggedRole === "SUPER_ADMIN" || loggedRole === "ADMIN") {
+            router.push("/admin");
+          } else if (loggedRole === "DOCTOR") {
+            router.push("/doctor");
+          } else if (loggedRole === "PATIENT") {
+            router.push("/patient");
+          } else {
+            router.push("/");
+          }
+          router.refresh();
         },
         onError: (err: any) => {
           const errorMessage =

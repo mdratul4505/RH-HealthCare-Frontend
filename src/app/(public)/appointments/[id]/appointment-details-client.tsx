@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import PageTransition from "@/components/layout/PageTransition";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -163,7 +164,7 @@ export default function AppointmentDetailsClient({ id }: { id: string }) {
   const meetingRoomUrl = `https://meet.jit.si/ph-healthcare-${id}`;
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-6 md:py-10 space-y-8">
+    <PageTransition className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-6 md:py-10 space-y-8">
       {/* Top Header Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-border">
         <div className="flex items-center gap-3">
@@ -748,6 +749,6 @@ export default function AppointmentDetailsClient({ id }: { id: string }) {
           </div>
         </TabsContent>
       </Tabs>
-    </div>
+    </PageTransition>
   );
 }

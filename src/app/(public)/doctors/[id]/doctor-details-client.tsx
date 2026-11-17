@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import PageTransition from "@/components/layout/PageTransition";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "@/components/ui/toast";
@@ -165,7 +166,7 @@ export default function DoctorDetailsClient({ id }: { id: string }) {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-6 md:py-10 space-y-8">
+    <PageTransition className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-6 md:py-10 space-y-8">
       {/* Back button */}
       <div>
         <Link
@@ -364,6 +365,6 @@ export default function DoctorDetailsClient({ id }: { id: string }) {
           </div>
         </div>
       </div>
-    </div>
+    </PageTransition>
   );
 }

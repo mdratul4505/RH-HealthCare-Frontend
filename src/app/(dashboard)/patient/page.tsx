@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import PageTransition from "@/components/layout/PageTransition";
 import { useGetMe } from "@/hooks";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -86,7 +87,7 @@ export default function PatientDashboard() {
   );
 
   return (
-    <div className="space-y-8 max-w-7xl mx-auto">
+    <PageTransition className="space-y-8 max-w-7xl mx-auto">
       {/* Welcome & Fast Booking Hero */}
       <div className="rounded-3xl bg-gradient-to-r from-teal-700 via-teal-800 to-cyan-900 text-white p-6 sm:p-8 relative overflow-hidden shadow-lg">
         <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
@@ -317,6 +318,6 @@ export default function PatientDashboard() {
           </Table>
         </div>
       </div>
-    </div>
+    </PageTransition>
   );
 }
