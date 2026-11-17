@@ -49,11 +49,14 @@ export default function LoginForm() {
           });
           router.push("/");
         },
-        onError: (err) => {
+        onError: (err: any) => {
+          const errorMessage =
+            err?.data?.message ||
+            err?.message ||
+            "Something went wrong. Please try again";
           toast.add({
             title: "Authorization failure",
-            description:
-              err.message || "Something went wrong. Please try again",
+            description: errorMessage,
             type: "error",
           });
         },

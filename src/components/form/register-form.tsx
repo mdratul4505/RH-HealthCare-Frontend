@@ -72,11 +72,14 @@ export default function RegisterForm() {
           const params = new URLSearchParams({ email: registrationData.email });
           router.push(`/register/verify-account?${params.toString()}`);
         },
-        onError: (err) => {
+        onError: (err: any) => {
+          const errorMessage =
+            err?.data?.message ||
+            err?.message ||
+            "Something went wrong. Please try again";
           toast.add({
             title: "Authorization failure",
-            description:
-              err.message || "Something went wrong. Please try again",
+            description: errorMessage,
             type: "error",
           });
         },
