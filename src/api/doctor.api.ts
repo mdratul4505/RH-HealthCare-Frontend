@@ -23,3 +23,15 @@ export function verifyDoctorAccount(payload: VerifyAccountPayload) {
     body: payload,
   });
 }
+
+export function getAllDoctorsPublic() {
+  return apiClient("/doctor/public/all-doctors");
+}
+
+export function getAvailableDoctorsToday() {
+  return apiClient("/doctor/public/available-today");
+}
+
+export function getSingleDoctorPublic(doctorId: string) {
+  return apiClient(`/doctor/public/${doctorId}`);
+}

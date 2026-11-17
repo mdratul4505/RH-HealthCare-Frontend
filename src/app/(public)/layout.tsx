@@ -6,7 +6,7 @@ export default function PublicLayout({ children }: { children: ReactNode }) {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-1 flex items-center justify-center py-10 px-4">
+      <main className="flex-1 w-full">
         {children}
       </main>
       <Footer />

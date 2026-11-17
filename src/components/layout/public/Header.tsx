@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import Logo from "@/assets/svg/logo";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export default function Header() {
+function HeaderContent() {
   const { t } = useLanguage();
   const pathname = usePathname();
   const router = useRouter();
@@ -302,5 +302,17 @@ export default function Header() {
         </div>
       )}
     </header>
+  );
+}
+
+export default function Header() {
+  return (
+    <Suspense
+      fallback={
+        <header className="sticky top-0 z-50 w-full border-b bg-card/80 backdrop-blur-md h-20" />
+      }
+    >
+      <HeaderContent />
+    </Suspense>
   );
 }
