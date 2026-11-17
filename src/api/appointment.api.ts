@@ -35,3 +35,20 @@ export function getAllAppointmentsAdmin() {
 export function getSingleAppointment(appointmentId: string) {
   return apiClient(`/appointment/${appointmentId}`);
 }
+
+export function submitPrescription(payload: {
+  appointmentId: string;
+  diagnosis: string;
+  medicines: Array<{
+    name: string;
+    dosage: string;
+    duration: string;
+    instructions: string;
+  }>;
+  followUp?: string;
+}) {
+  return apiClient(`/appointment/${payload.appointmentId}/prescription`, {
+    method: "POST",
+    body: payload,
+  });
+}

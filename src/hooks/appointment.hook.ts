@@ -5,18 +5,20 @@ import {
   getDoctorAppointments,
   getAllAppointmentsAdmin,
   getSingleAppointment,
-} from "@/api";
+  submitPrescription,
+  BookAppointmentPayload,
+} from "@/api/appointment.api";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
 export function useBookAppointment() {
   return useMutation({
-    mutationFn: bookAppointment,
+    mutationFn: (payload: BookAppointmentPayload) => bookAppointment(payload),
   });
 }
 
 export function usePayAppointment() {
   return useMutation({
-    mutationFn: payAppointment,
+    mutationFn: (appointmentId: string) => payAppointment(appointmentId),
   });
 }
 
@@ -24,7 +26,6 @@ export function useGetMyAppointments() {
   return useQuery({
     queryKey: ["my-appointments"],
     queryFn: getMyAppointments,
-    retry: 1,
   });
 }
 
@@ -32,7 +33,6 @@ export function useGetDoctorAppointments() {
   return useQuery({
     queryKey: ["doctor-appointments"],
     queryFn: getDoctorAppointments,
-    retry: 1,
   });
 }
 
@@ -40,7 +40,6 @@ export function useGetAllAppointmentsAdmin() {
   return useQuery({
     queryKey: ["admin-appointments"],
     queryFn: getAllAppointmentsAdmin,
-    retry: 1,
   });
 }
 
@@ -49,6 +48,11 @@ export function useGetSingleAppointment(appointmentId: string) {
     queryKey: ["appointment", appointmentId],
     queryFn: () => getSingleAppointment(appointmentId),
     enabled: !!appointmentId,
-    retry: 1,
+  });
+}
+
+export function useSubmitPrescription() {
+  return useMutation({
+    mutationFn: submitPrescription,
   });
 }
